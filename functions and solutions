@@ -1,0 +1,207 @@
+def move_2():
+    move()
+    move()
+
+def move_3():
+    move()
+    move()
+    move()
+    
+def move_4():
+    move()
+    move()
+    move()
+    move()
+    
+def move_5():
+    move()
+    move()
+    move()
+    move()
+    move()
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+def square():
+    move()
+    turn_left()
+    move()
+    turn_left()
+    move()
+    turn_left()
+    move()
+def hurdle_1():  
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
+    
+def hurdle_var():
+    turn_left()
+    while wall_on_right():
+        move()
+    if not wall_on_right():
+        turn_right()
+        
+        
+    
+def hurdle_6():
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+
+#for step in range(6):
+    hurdle_1()
+    
+#while not at_goal():
+    hurdle_1()
+    
+#while not at_goal():
+    if wall_in_front():
+        hurdle_1()
+    else:
+        move()
+        
+def perimiter():
+    while not wall_in_front():
+        move()
+    while wall_in_front():
+        turn_right()
+def patrol_perimiter():  
+    #turn_left()
+    perimiter()
+    perimiter()
+    perimiter()
+    perimiter()
+def permanent_patrol:
+    while 0 != 1:
+    patrol_perimiter()
+  
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+
+
+
+def hurdle_inf():
+    turn_left()
+    while wall_on_right():
+        move()
+    turn_right()
+    move()
+    turn_right()
+    
+    while front_is_clear():
+        move()
+    turn_left()
+        
+        
+while not at_goal():
+    if wall_in_front:
+        hurdle_inf()
+    else:
+        move()
+def way_finder():
+    if right_is_clear:
+        turn_right()
+        move()
+    elif front_is_clear:
+        move()
+    else:
+        turn_left()
+
+
+while front_is_clear():
+    move()
+    turn_left()
+        
+    
+while not at_goal():
+    way_finder()
+    
+
+# code for around 1 apple can't get count to work right
+x = 0
+if at_goal:
+    move()
+while not at_goal():
+    
+    if object_here():
+        take()
+        x =+ 1
+
+    elif front_is_clear():
+        move()
+        print(x)
+    elif turn_left():  
+        
+# around 2 clockwise       
+turn_around()
+put()
+move()
+while not object_here():#front_is_clear():
+    turn_left()
+    if not front_is_clear():
+        turn_right()
+        if front_is_clear():
+            move()
+        elif turn_right():
+            if front_is_clear():
+                move()
+    elif front_is_clear():
+        move()
+
+#while not object_here():
+    #turn_left()
+    #if front_is_clear():
+        #move()
+    #elif turn_around():
+
+#around 2 
+put()
+move()
+
+while wall_on_right and not object_here():
+    if right_is_clear(): 
+        turn_right()
+        if front_is_clear():
+            move()
+    elif not front_is_clear():
+        turn_left()
+        if front_is_clear():
+            move()
+    elif front_is_clear():
+        move()
+
+#center 1 
+x = 0 
+while not wall_in_front():
+    if not object_here():
+        move()
+        x += 1
+        print(x)
+    if wall_in_front():
+        x = x // 2
+        turn_around()
+        for i in range(x):
+            move()
+            #put()
+            print(x)
+        if front_is_clear():
+            put()
