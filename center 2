@@ -1,0 +1,27 @@
+# center 2 solution
+x = 0
+y = 0
+z = 0
+if wall_in_front():
+    turn_left()
+while not wall_in_front():
+    if not object_here():
+        move()
+        x += 1
+        #print(x)
+    if wall_in_front():
+        y += 1
+        turn_around()
+        x = x //2
+        for i in range(x):
+            move()
+            print(f"{y} = y")
+            print(f'{x} = x')
+        if front_is_clear and y <= 1:
+            turn_right()
+    if y > 1:
+        put()
+        done()
+    
+        
+    
