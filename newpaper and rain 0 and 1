@@ -1,0 +1,110 @@
+#newspaper 0
+def one_stair_up():
+    turn_left()
+    move()
+    turn_right()
+    move()
+    move()
+    
+def one_stair_down():
+    move()
+    move()
+    turn_left()
+    move()
+    turn_right()
+
+
+take()
+one_stair_up()
+one_stair_up()
+one_stair_up()
+put()
+turn_around()
+one_stair_down()
+one_stair_down()
+one_stair_down()
+
+
+#newspaper 1
+def one_stair_up():
+    turn_left()
+    move()
+    turn_right()
+    move()
+    move()
+    
+def one_stair_down():
+    move()
+    move()
+    turn_left()
+    move()
+    turn_right()
+
+
+take()
+one_stair_up()
+one_stair_up()
+one_stair_up()
+
+while object_here():
+    take("token")
+put("star")
+turn_around()
+one_stair_down()
+one_stair_down()
+one_stair_down()
+
+
+# rain 0    
+for x in range (6):
+    move()
+build_wall()
+turn_around()
+for x in range (5):
+    move()
+    
+# rain 1
+x = 0
+move()
+
+turn_right()
+
+move()
+
+while wall_on_right():
+    if x >= 4:
+        move()
+        move()
+        done()
+    
+    if right_is_clear():
+        turn_right()
+        build_wall()
+        turn_left()
+    if front_is_clear():
+        move()
+        
+        
+        if right_is_clear():
+            turn_right()
+            build_wall()
+            turn_left()
+        
+        if not front_is_clear():#
+            turn_left()
+            x += 1
+            print(x)
+            
+            if right_is_clear():
+                turn_right()
+                build_wall()
+                turn_left()
+            
+            if front_is_clear():
+                
+                if right_is_clear():
+                    turn_right()
+                    build_wall()
+                    turn_left()
+                    move()
+                    x += 1
