@@ -1,0 +1,69 @@
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+
+#rain 2 functions
+
+def close_window():
+    turn_right()
+    build_wall()
+    turn_left()
+    
+def check_for_corner():
+    if not wall_on_right() and front_is_clear():
+        move()
+        if wall_on_right():#checks corner turns around if not
+            turn_around()
+            move()
+            turn_around() #faces orginal way
+        elif not wall_on_right(): #nav corner right turn
+            turn_around()
+            move()
+            turn_left()
+            move()
+            if not front_is_clear():
+                turn_left()
+                if front_is_clear() and wall_on_right():
+                    move()
+         
+
+
+    
+# rain 2
+think(2) # remove if checking code make robot move faster
+x = 0
+move()
+move()
+move()
+turn_right()
+move()
+
+while wall_on_right():
+       
+       if front_is_clear() and right_is_clear():
+           close_window()
+       if front_is_clear():
+           if wall_on_right():
+                move()
+                if not wall_on_right():
+                    check_for_corner()
+                    if x >= 5: # kill switch here count corner left > 5
+                        done()
+                
+       if right_is_clear():
+           close_window()
+                    
+       if not front_is_clear():
+           turn_left()
+           x += 1
+           print(x)
+           
