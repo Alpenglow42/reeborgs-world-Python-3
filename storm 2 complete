@@ -15,7 +15,7 @@ def turn_around():
 
 def take_object():
     #o = 1
-    global o # declares variable global so it can be used anywhere.
+    global o # declares variable global so it can be used anywhere. see https://careerkarma.com/blog/python-local-variable-referenced-before-assignment/
     while object_here():
         take()
         o += 1
