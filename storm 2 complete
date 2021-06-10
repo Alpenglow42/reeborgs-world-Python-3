@@ -1,0 +1,83 @@
+w = 0
+y = 0
+x = 0
+z = 1
+o = 0
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+def take_object():
+    #o = 1
+    global o # declares variable global so it can be used anywhere.
+    while object_here():
+        take()
+        o += 1
+        #y += 1
+
+        
+think(1)
+    
+# storm 2    
+#think(2)
+
+while z == 1:
+    take_object()
+    #while object_here():
+        #take()
+        #y += 1
+        #move()
+        #x += 1
+    if not object_here():
+        if front_is_clear():
+            move()
+            x += 1
+        
+        elif not front_is_clear(): #and wall_on right():
+            if y < 1: #left turn
+                turn_left()
+                move()
+                take_object()
+                turn_left()
+                y += 1
+                w += 1
+            elif y >= 1 and w < 3: #right turn
+                turn_right()
+                move()
+                take_object()
+                turn_right()
+                y = 0 
+            elif w >= 3: #last bit to bin toss
+                turn_left()
+                while front_is_clear():
+                    move()
+                    take_object()
+                    if not front_is_clear(): #and if not wall_on right():
+                        #toss()
+                        for x in range (o):
+                            toss() #need to toss in range of objects found
+                         
+                        if w == 3:# return to starting point    
+                            turn_left()
+                            move()
+                            turn_right()
+                            move()
+                            move()
+                            turn_right()
+                            move()
+                            done()
+
+        
+           
+          
+           
+                    
+                
+                
+            
