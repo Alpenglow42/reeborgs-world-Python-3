@@ -1,14 +1,16 @@
-# need to get corner returns see notes on bottom and total count
-   
-   
-   r = 0
-w = 0
-y = 0
-x = 0
-z = 1
-o = 0
-a = 0
-b = 0
+
+
+
+v = 0 # counts vertically
+t = 0 # total count
+r = 0 # trigger for right turn
+w = 0 # not being used
+y = 0 # trigger count for left turn
+x = 0 # main move count currently not being used
+z = 1 # just for main while loop
+o = 0 # object pickup count
+a = 0 #first row count horzont
+b = 0 # count for each row
 def turn_right():
     #3 lefts make a right
     turn_left()
@@ -27,8 +29,37 @@ def take_object():
         o += 1
         #y += 1
 
+def upper_right():
+    global v
+    global a
+    global t
+    
+    if t == (a * v):
+        if upper_left_check():
+            return_and_toss()
+            
+        else: # checking for right corner and moves to left and return_and_toss()
+            turn_left()
+            if not front_is_clear():
+                turn_right()
+                if not front_is_clear() and right_is_clear():
+                    turn_around()
+                    for x in range (a):
+                        move()
+                        take_object()
+                        if front_is_not_clear():
+                            return_and_toss()
+                        
+        
+
+                   
+    
+    
+    
+
 def check_pond():
     global b
+    global t
     if not front_is_clear(): #check for pond by seeing if can go around.
             turn_left()
             if front_is_clear(): #if not reset
@@ -37,11 +68,15 @@ def check_pond():
                 if front_is_clear(): #first step around
                     move()
                     b += 1
-                    print(f"cpB = {b}")
+                    t += 1
+                    print (f"t = {t}")
+                    #print(f"cpB = {b}")
                     if front_is_clear(): # will hit wall if not pond here
                         move()
                         b += 1
-                        print(f"cpB = {b}")
+                        t += 1
+                        print (f"t = {t}")
+                        #print(f"cpB = {b}")
                         turn_right()
                         if front_is_clear():# second step full around
                             move()
@@ -53,8 +88,9 @@ def check_pond():
                         turn_left()
                         move()
                         turn_around() #facing orginal direction now
-def return_and_toss():
-    if w >= 3: #last bit to bin toss
+
+def return_and_toss(): # starts from upper left corner facing left wall
+    if t == a* v: #last bit to bin toss need different trigger
         turn_left()
         while front_is_clear():
             move()
@@ -64,7 +100,7 @@ def return_and_toss():
                 for x in range (o):
                     toss() #need to toss in range of objects found
 
-                if w == 3:# return to starting point    
+                if t == a * v:# return to starting point    
                     turn_left()
                     move()
                     turn_right()
@@ -88,53 +124,75 @@ def upper_left_check(): #checks for corner and turns check for clearance
 def count_width():
    while front_is_clear():
         global a
+        global t
         move()
         take_object()
         a += 1
+        t += 1
         print(f"a = {a}")
+        print (f"t = {t}")
 
 def first_left():
     if not front_is_clear():
         global y
         global r
+        global v
+        global t
         turn_left()
         move()
         take_object()
         turn_left()
-        y += 1        
+        y += 1
+        v += 1
+        #t += 1
+        print (f"t = {t}")
         r = 0
 def compare_width():
     
     while front_is_clear():
         global b
+        global t
         
         move()
         take_object()
         b += 1
+        t += 1
+        print (f"t = {t}")
+
         print(f"b = {b}")
         #if b != a :
             #check_pond()
 def trash_bin():
+    global t
     while front_is_clear():
         take_object()
         move()
+        t += 1
+        print (f"t = {t}")
         
 
 def first_right():
     if not front_is_clear():
         global y
         global r
+        global v
+        global t
         turn_right()
         move()
         take_object()
         turn_right()
         r += 1
+        v += 1
+        #t += 1
         y = 0        
 
 def third_row():
+    global t
     #b = 1 #add 1 to be to make count correct for bin row
     for x in range(a -1):
         move()
+        t += 1
+        print (f"t = {t}")
         take_object()
     if not front_is_clear():
         first_left()
@@ -150,15 +208,22 @@ first_right()
 third_row()
 while z == 1:
     take_object()
+    print (f"t = {t}")
+    print (f"v = {v}")
+    
     #while object_here():
         #take()
         #y += 1
         #move()
         #x += 1
+    
+        
+        
     if not object_here():
         if front_is_clear():
             compare_width()
             x += 1
+            #t += 1
             print (f"x = {x}")
         
         if b != a:
@@ -166,29 +231,40 @@ while z == 1:
             print(f"b = {b}")
             check_pond()
         
-                    
+#        if not front_is_clear() and not right_is_clear():
+#            if turn_left():
+#                if t == (a * v) and not front_is_clear():
+#                    upper_right
+#            else:
+#                turn_right()
+                
+            
         elif not front_is_clear(): #and wall_on right():
             if y == 0: #left turn
                 turn_left()
-                move()
-                take_object()
-                turn_left()
-                y += 1
-                r = 0
-                b = 0
-                #w += 1
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_left()
+                    y += 1
+                    v += 1
+                    r = 0
+                    b = 0
+                    #w += 1
             elif r == 0:#and w < 3: #right turn
                 turn_right()
-                move()
-                take_object()
-                turn_right()
-                y = 0
-                r += 1
-                b = 0
-            #elif upper_left_check():
-             #   return_and_toss()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_right()
+                    y = 0
+                    v += 1
+                    r += 1
+                    b = 0
+            elif t == (a * v) and not front_is_clear():
+                upper_right
+            
                 
 ### everything is working wasn't making b = 0 after row did that after right left turn then
 # made the trigger for check_pond() work. now need return for upper right corner scenerio
-# make a total count of horzontal steps x and add them to vertical steps. at end if x * Vert then 
-# trigger corner left and right return.
+
