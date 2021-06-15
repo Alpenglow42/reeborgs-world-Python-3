@@ -1,8 +1,59 @@
 
 
 
+x2 = 1
+y2 = 1
+
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+
+
+
+
+
+def grid_count():
+    global x2
+    global y2
+    while front_is_clear():
+        move()
+        x2 += 1
+        #if not front_is_clear():
+            #turn_left()
+            
+def vertical_count():
+    global y2
+    global x2
+    while front_is_clear():
+        move()
+        y2 += 1
+        if not front_is_clear():
+            turn_around()
+            for x in range(y2 -1):
+                move()
+                if not front_is_clear():
+                    turn_right()
+                    for x in range(x2 -1):
+                        move()
+                        if not front_is_clear():
+
+                            print(f"x2 = {x2}")
+                            print(f"y2 = {y2}")                                   
+
+                                    
+                                    
+                                    
 v = 0 # counts vertically
-t = 0 # total count
+t = 3 # total count
 r = 0 # trigger for right turn
 w = 0 # not being used
 y = 0 # trigger count for left turn
@@ -33,12 +84,14 @@ def upper_right():
     global v
     global a
     global t
+    print("working")
     
-    if t == (a * v):
-        if upper_left_check():
+    if t == (x2 * y2):
+        if y2 % 2 == 0:
+            upper_left_check()
             return_and_toss()
             
-        else: # checking for right corner and moves to left and return_and_toss()
+        else: #  could also make y2 %2 != 0 #checking for right corner and moves to left and return_and_toss()
             turn_left()
             if not front_is_clear():
                 turn_right()
@@ -47,13 +100,41 @@ def upper_right():
                     for x in range (a):
                         move()
                         take_object()
-                        if front_is_not_clear():
+                        if not front_is_clear():
                             return_and_toss()
-                        
-        
 
+        
+def upper_left_check(): #checks for corner and turns check for clearance
+    if not front_is_clear() and wall_on_right():
+        turn_left() #if in upper right left turn would not be clear
+        if wall_on_right and front_is_clear():
+            turn_right()
                    
-    
+
+                
+def return_and_toss(): # starts from upper left corner facing left wall
+    if t == (x2 * y2): #last bit to bin toss need different trigger
+        turn_left()
+        while front_is_clear():
+            move()
+            take_object()
+            if not front_is_clear(): #and if not wall_on right():
+                #toss()
+                for x in range (o):
+                    toss() #need to toss in range of objects found
+
+                if t == (x2 * y2):# return to starting point    
+                    turn_left()
+                    move()
+                    turn_right()
+                    move()
+                    move()
+                    turn_right()
+                    move()
+                    done()
+
+                                    
+                
     
     
 
@@ -89,33 +170,8 @@ def check_pond():
                         move()
                         turn_around() #facing orginal direction now
 
-def return_and_toss(): # starts from upper left corner facing left wall
-    if t == a* v: #last bit to bin toss need different trigger
-        turn_left()
-        while front_is_clear():
-            move()
-            take_object()
-            if not front_is_clear(): #and if not wall_on right():
-                #toss()
-                for x in range (o):
-                    toss() #need to toss in range of objects found
 
-                if t == a * v:# return to starting point    
-                    turn_left()
-                    move()
-                    turn_right()
-                    move()
-                    move()
-                    turn_right()
-                    move()
-                    done()
 
-                    
-def upper_left_check(): #checks for corner and turns check for clearance
-    if not front_is_clear() and wall_on_right():
-        turn_left() #if in upper right left turn would not be clear
-        if wall_on_right and front_is_clear():
-            turn_right()
     
 
 
@@ -144,7 +200,7 @@ def first_left():
         turn_left()
         y += 1
         v += 1
-        #t += 1
+        t += 1
         print (f"t = {t}")
         r = 0
 def compare_width():
@@ -183,7 +239,7 @@ def first_right():
         turn_right()
         r += 1
         v += 1
-        #t += 1
+        t += 1
         y = 0        
 
 def third_row():
@@ -200,7 +256,10 @@ def third_row():
         
 # storm     
 think(0)
-
+grid_count()
+turn_left()
+vertical_count()
+turn_around()
 count_width()
 first_left()
 trash_bin()
@@ -240,7 +299,7 @@ while z == 1:
                 
             
         elif not front_is_clear(): #and wall_on right():
-            if y == 0: #left turn
+            if y == 0 and t != (x2 *y2): #left turn
                 turn_left()
                 if front_is_clear():
                     move()
@@ -248,10 +307,11 @@ while z == 1:
                     turn_left()
                     y += 1
                     v += 1
+                    t += 1
                     r = 0
                     b = 0
                     #w += 1
-            elif r == 0:#and w < 3: #right turn
+            elif r == 0 and t != (x2 * y2):#and w < 3: #right turn
                 turn_right()
                 if front_is_clear():
                     move()
@@ -260,11 +320,20 @@ while z == 1:
                     y = 0
                     v += 1
                     r += 1
+                    t += 1 
                     b = 0
-            elif t == (a * v) and not front_is_clear():
-                upper_right
+            elif t == (x2 * y2):
+                print(f"T = {t}")
+                print(x2 * y2)
+                #z = 0 # exits while loop
+                upper_right()
             
                 
-### everything is working wasn't making b = 0 after row did that after right left turn then
-# made the trigger for check_pond() work. now need return for upper right corner scenerio
+# the main key ended up using x2 and y2 to count and measure size so math for t count work out to trigger if elif statments. However if pond moved more freely this would 
+#cause more problems and this wouldn't have worked as well.
+# another possible solution could have been to count size and then work from known corner to known corner.
+                                    
+                                    
+                                    
+                                    
 
