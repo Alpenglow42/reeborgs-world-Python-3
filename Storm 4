@@ -1,0 +1,172 @@
+
+
+
+
+#storm 4
+## refined code of storm 3
+### robot always starts in upper left corner after counting x2 and y2 size of grid.
+### it then counts down useing v -=1, to tell difference between short row and pond and when to 
+### return and toss objects.
+### a count moves across by subtracting 1 from x2 and stays constant, b count move of each row
+### and is reset after each turn to 0. if a != b this is how it check for a pond.
+
+x2 = 1 # x grid size horizontal
+y2 = 1 # y grid size vertical
+v = 1 # counts vertically down keeps track of current row
+t = 3 # total count of squares robot moves, at 3 because of short rows and starting at position 1 
+r = 0 # trigger for right turn
+
+y = 0 # trigger count for left turn
+
+z = 1 # just for main while loop
+o = 0 # object pickup count
+a = 0 #first row count horizontal changed to a = (x2 -1) left as constant
+b = 0 # count for each row
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+def take_object():
+    #o = 1
+    global o
+    while object_here():
+        take()
+        o += 1
+        #y += 1
+        
+def grid_count():
+    global x2, y2
+    
+    while front_is_clear():
+        move()
+        x2 += 1
+        
+            
+def vertical_count():
+    global y2, x2, v
+    
+    while front_is_clear():
+        move()
+        y2 += 1
+        v += 1
+        if not front_is_clear():
+            #print(f"y2 = {y2}, x2 = {x2}")
+            turn_left()
+            break
+def check_pond():
+    global b, t
+    
+    if not front_is_clear(): #check for pond by seeing if can go around.
+            turn_left()
+            if front_is_clear(): #if not reset
+                move()
+                turn_right()
+                if front_is_clear(): #first step around
+                    move()
+                    b += 1
+                    t += 1
+                    #print (f"t = {t}")
+                    #print(f"cpB = {b}")
+                    if front_is_clear(): # will hit wall if not pond here
+                        move()
+                        b += 1
+                        t += 1
+                        #print (f"t = {t}")
+                        #print(f"cpB = {b}")
+                        turn_right()
+                        if front_is_clear():# second step full around
+                            move()
+                            turn_left()
+                            
+                    elif not front_is_clear(): # reverse path if not a pond
+                        turn_around()
+                        move()
+                        turn_left()
+                        move()
+                        turn_around() #facing orginal direction now
+
+            
+
+####main code in here functions above
+#storm 4
+#think(0) # comment out to make code run slower
+grid_count()
+turn_left()
+vertical_count()
+
+while z == 1:
+    take_object()
+    #print (f"t = {t}")
+    #print (f"v = {v}")
+      
+    if not object_here():
+        if front_is_clear():
+            move()
+            take_object()
+            
+            b += 1
+            a = (x2 - 1)
+            #print(f"B = {b}, A = {a}")
+            #print(f"V = {v}")
+            
+        
+        elif v == 1:
+                turn_around()
+                for x in range(a):
+                    move()
+                    if not front_is_clear():
+                        turn_right()
+                        for x in range(o):
+                            toss()
+                            o -= 1
+                        if o == 0:
+                            print(f"O = {o}")
+                            turn_left()
+                            done()
+                            z = 0 # kills main while loup
+        
+        elif b != a and v != 2:
+            #print(f"a = {a}")
+            #print(f"b = {b}")
+            check_pond()
+        
+
+                
+            
+        elif not front_is_clear(): 
+             
+            if y == 0 and t != (x2 *y2): #left turn
+                turn_left()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_left()
+                    y += 1
+                    v -= 1
+                    #print(f"v = {v} left turn")
+                    t += 1
+                    r = 0
+                    b = 0
+                    
+            elif r == 0 and t != (x2 * y2):#right turn
+                turn_right()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_right()
+                    y = 0
+                    v -= 1 
+                    #print(f"v = {v} right turn")
+                    r += 1
+                    t += 1 
+                    b = 0
+           
+               
