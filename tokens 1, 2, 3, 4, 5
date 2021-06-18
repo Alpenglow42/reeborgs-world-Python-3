@@ -1,0 +1,64 @@
+
+
+# the tokens code is pretty easy compared to storm. 1, 2, and 3 is essentially same code. 4 and 5 only require modification of m = number.
+
+
+#tokens 1        
+               
+v = 0           
+    
+    
+while not at_goal():
+    #move()
+    
+    while object_here():
+        take()
+        #move()
+        v += 1
+        if not object_here()
+        move()
+        if v == 5 :
+            for x in range(v):
+                put()
+            v = 0
+ 
+
+
+#tokens 4        
+               
+v = 0           
+m = 0    
+    
+while not at_goal():
+    #move()
+    while object_here() and m != 8:
+        take()
+        
+        v += 1
+        
+    if m == 8 :
+        for x in range(v):
+            put()
+    if not object_here() or m == 8:
+            move()
+            m += 1
+            print(m)
+
+#tokens 5        
+               
+v = 0           
+m = 0    
+    
+while not at_goal():
+    #move()
+    while object_here() and m != 6:
+        take()
+        
+        v += 1
+        
+    if m == 6 :
+        for x in range(v):
+            put()
+    if not object_here() or m == 6:
+            move()
+            m += 1
