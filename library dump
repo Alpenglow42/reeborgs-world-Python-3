@@ -1,0 +1,1148 @@
+cleaning out library
+was using it to save all solutions
+
+
+
+
+
+
+
+
+
+def move_2():
+    move()
+    move()
+
+def move_3():
+    move()
+    move()
+    move()
+    
+def move_4():
+    move()
+    move()
+    move()
+    move()
+    
+def move_5():
+    move()
+    move()
+    move()
+    move()
+    move()
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+    
+    
+def find_north(): # turn left 4 times to complete circle check for north each time
+    while not is_facing_north():
+        turn_left()
+        if is_facing_north():
+            print("north found")
+            
+def square():
+    move()
+    turn_left()
+    move()
+    turn_left()
+    move()
+    turn_left()
+    move()
+def hurdle_1():  
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
+    
+def hurdle_var():
+    turn_left()
+    while wall_on_right():
+        move()
+    if not wall_on_right():
+        turn_right()
+        
+        
+    
+def hurdle_6():
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+    hurdle_1()
+
+#for step in range(6):
+    hurdle_1()
+    
+#while not at_goal():
+    hurdle_1()
+    
+#while not at_goal():
+    if wall_in_front():
+        hurdle_1()
+    else:
+        move()
+        
+def perimiter():
+    while not wall_in_front():
+        move()
+    while wall_in_front():
+        turn_right()
+def patrol_perimiter():  
+    #turn_left()
+    perimiter()
+    perimiter()
+    perimiter()
+    perimiter()
+def permanent_patrol:
+    while 0 != 1:
+    patrol_perimiter()
+  
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+
+
+
+def hurdle_inf():
+    turn_left()
+    while wall_on_right():
+        move()
+    turn_right()
+    move()
+    turn_right()
+    
+    while front_is_clear():
+        move()
+    turn_left()
+        
+        
+while not at_goal():
+    if wall_in_front:
+        hurdle_inf()
+    else:
+        move()
+def way_finder():
+    if right_is_clear:
+        turn_right()
+        move()
+    elif front_is_clear:
+        move()
+    else:
+        turn_left()
+
+
+while front_is_clear():
+    move()
+    turn_left()
+        
+    
+while not at_goal():
+    way_finder()
+    
+
+# code for around 1 apple can't get count to work right
+x = 0
+if at_goal:
+    move()
+while not at_goal():
+    
+    if object_here():
+        take()
+        x =+ 1
+
+    elif front_is_clear():
+        move()
+        print(x)
+    elif turn_left():  
+        
+# around 2 clockwise       
+turn_around()
+put()
+move()
+while not object_here():#front_is_clear():
+    turn_left()
+    if not front_is_clear():
+        turn_right()
+        if front_is_clear():
+            move()
+        elif turn_right():
+            if front_is_clear():
+                move()
+    elif front_is_clear():
+        move()
+
+#while not object_here():
+    #turn_left()
+    #if front_is_clear():
+        #move()
+    #elif turn_around():
+
+#around 2 
+put()
+move()
+
+while wall_on_right and not object_here():
+    if right_is_clear(): 
+        turn_right()
+        if front_is_clear():
+            move()
+    elif not front_is_clear():
+        turn_left()
+        if front_is_clear():
+            move()
+    elif front_is_clear():
+        move()
+
+#center 1 
+x = 0 
+while not wall_in_front():
+    if not object_here():
+        move()
+        x += 1
+        print(x)
+    if wall_in_front():
+        x = x // 2
+        turn_around()
+        for i in range(x):
+            move()
+            #put()
+            print(x)
+        if front_is_clear():
+            put()
+
+            
+            
+# center 2 solution
+x = 0
+y = 0
+z = 0
+if wall_in_front():
+    turn_left()
+while not wall_in_front():
+    if not object_here():
+        move()
+        x += 1
+        #print(x)
+    if wall_in_front():
+        y += 1
+        turn_around()
+        x = x //2
+        for i in range(x):
+            move()
+            print(f"{y} = y")
+            print(f'{x} = x')
+        if front_is_clear and y <= 1:
+            turn_right()
+    if y > 1:
+        put()
+        done()
+        
+        
+#harvest 1
+x = 0
+y = 0
+while not wall_in_front():#object_here():
+    move()
+    if wall_in_front()and x < 1:
+        turn_left()
+        x += 1
+        move()
+        turn_left()
+    if wall_in_front() and x >= 1:
+        turn_right()
+        if front_is_clear():
+            move()
+            turn_right()
+            x = 0
+        if not front_is_clear():
+            turn_right()
+    if object_here():
+        take()
+        y += 1
+        print(f"y = {y}")        
+    
+     garden = [23, 24, 25, 26, 27, 28, 
+          33, 34, 35, 36, 37, 38, 
+          43, 44, 45, 46, 47, 48, 
+          53, 54, 55, 56, 57, 58,
+          63, 64, 65, 66, 67, 68, 
+          73, 74, 75, 76, 77, 78]   
+    
+    
+# box x = 19 y = 2 end x = 25 y = 2
+# row 2 x = 29 and y = 3 x = 35
+#harvest 1
+w = 0
+x = 1
+y = 0
+z = 0
+
+garden = [23, 24, 25, 26, 27, 28, 
+          33, 34, 35, 36, 37, 38, 
+          43, 44, 45, 46, 47, 48, 
+          53, 54, 55, 56, 57, 58,
+          63, 64, 65, 66, 67, 68, 
+          73, 74, 75, 76, 77, 78]
+
+while not wall_in_front():
+    move()
+    x += 1
+    print(f"x = {x}")
+    if wall_in_front()and y < 1:
+        turn_left()
+        x += 1
+        y += 1
+        move()
+        turn_left()
+        print(f"y = {y}")
+    if wall_in_front() and y >= 1:
+        turn_right()
+         
+        x += 1
+        if front_is_clear():
+            move()
+            turn_right()
+            y = 0
+            print(f"y = {y}")
+            print(f"x = {x}")
+        #if not front_is_clear():
+            #turn_right()
+    while x in garden:
+        if object_here():
+            take()
+            print(f"x = {x}")
+            
+        if not object_here():
+            if x in garden:
+                put()
+                move()
+                x += 1
+                print(f"x = {x}")
+        if x >= 79:
+            done()
+            
+            
+#newspaper 0
+def one_stair_up():
+    turn_left()
+    move()
+    turn_right()
+    move()
+    move()
+    
+def one_stair_down():
+    move()
+    move()
+    turn_left()
+    move()
+    turn_right()
+
+
+take()
+one_stair_up()
+one_stair_up()
+one_stair_up()
+put()
+turn_around()
+one_stair_down()
+one_stair_down()
+one_stair_down()
+
+
+#newspaper 1
+def one_stair_up():
+    turn_left()
+    move()
+    turn_right()
+    move()
+    move()
+    
+def one_stair_down():
+    move()
+    move()
+    turn_left()
+    move()
+    turn_right()
+
+
+take()
+one_stair_up()
+one_stair_up()
+one_stair_up()
+
+while object_here():
+    take("token")
+put("star")
+turn_around()
+one_stair_down()
+one_stair_down()
+one_stair_down()
+
+
+# rain 0    
+for x in range (6):
+    move()
+build_wall()
+turn_around()
+for x in range (5):
+    move()
+    
+# rain 1
+x = 0
+move()
+
+turn_right()
+
+move()
+
+while wall_on_right():
+    if x >= 4:
+        move()
+        move()
+        done()
+    
+    if right_is_clear():
+        turn_right()
+        build_wall()
+        turn_left()
+    if front_is_clear():
+        move()
+        
+        
+        if right_is_clear():
+            turn_right()
+            build_wall()
+            turn_left()
+        
+        if not front_is_clear():#
+            turn_left()
+            x += 1
+            print(x)
+            
+            if right_is_clear():
+                turn_right()
+                build_wall()
+                turn_left()
+            
+            if front_is_clear():
+                
+                if right_is_clear():
+                    turn_right()
+                    build_wall()
+                    turn_left()
+                    move()
+                    x += 1
+
+                    
+#rain 2 functions
+
+def close_window():
+    turn_right()
+    build_wall()
+    turn_left()
+    
+def check_for_corner():
+    if not wall_on_right() and front_is_clear():
+        move()
+        if wall_on_right():#checks corner turns around if not
+            turn_around()
+            move()
+            turn_around() #faces orginal way
+        elif not wall_on_right(): #nav corner right turn
+            turn_around()
+            move()
+            turn_left()
+            move()
+            if not front_is_clear():
+                turn_left()
+                if front_is_clear() and wall_on_right():
+                    move()
+         
+# rain 2
+think(2) # remove if checking code make robot move faster
+x = 0
+move()
+move()
+move()
+turn_right()
+move()
+
+while wall_on_right():
+       
+       if front_is_clear() and right_is_clear():
+           close_window()
+       if front_is_clear():
+           if wall_on_right():
+                move()
+                if not wall_on_right():
+                    check_for_corner()
+                    if x >= 5: # kill switch here count corner left > 5
+                        done()
+                
+       if right_is_clear():
+           close_window()
+                    
+       if not front_is_clear():
+           turn_left()
+           x += 1
+           print(x)
+           
+# storm 1    
+think(2)
+y = 0
+x = 0
+z = 1
+while z == 1:
+    while object_here():
+        take()
+        y += 1
+        #move()
+        #x += 1
+    if not object_here():
+        if front_is_clear():
+            move()
+            x += 1
+        elif not front_is_clear(): #in future have turn check for objects
+            turn_around()
+            for i in range(x):
+                move()
+                if not front_is_clear():
+                    turn_right()
+                    
+                    for i in range (y):
+                        toss()
+                if not front_is_clear(): #kill switch
+                    if right_is_clear():
+                        done()
+ def take_object():
+    #o = 1
+    global o
+    while object_here():
+        take()
+        o += 1
+        #y += 1
+
+w = 0
+y = 0
+x = 0
+z = 1
+o = 0
+
+# storm 2    
+#think(2)
+
+while z == 1:
+    take_object()
+    #while object_here():
+        #take()
+        #y += 1
+        #move()
+        #x += 1
+    if not object_here():
+        if front_is_clear():
+            move()
+            x += 1
+        
+        elif not front_is_clear(): #and wall_on right():
+            if y < 1: #left turn
+                turn_left()
+                move()
+                take_object()
+                turn_left()
+                y += 1
+                w += 1
+            elif y >= 1 and w < 3: #right turn
+                turn_right()
+                move()
+                take_object()
+                turn_right()
+                y = 0 
+            elif w >= 3: #last bit to bin toss
+                turn_left()
+                while front_is_clear():
+                    move()
+                    take_object()
+                    if not front_is_clear(): #and if not wall_on right():
+                        #toss()
+                        for x in range (o):
+                            toss() #need to toss in range of objects found
+                         
+                        if w == 3:# return to starting point    
+                            turn_left()
+                            move()
+                            turn_right()
+                            move()
+                            move()
+                            turn_right()
+                            move()
+                            done()
+
+
+#storm 3
+
+x2 = 1
+y2 = 1
+
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+
+
+
+
+
+def grid_count():
+    global x2
+    global y2
+    while front_is_clear():
+        move()
+        x2 += 1
+        #if not front_is_clear():
+            #turn_left()
+            
+def vertical_count():
+    global y2
+    global x2
+    while front_is_clear():
+        move()
+        y2 += 1
+        if not front_is_clear():
+            turn_around()
+            for x in range(y2 -1):
+                move()
+                if not front_is_clear():
+                    turn_right()
+                    for x in range(x2 -1):
+                        move()
+                        if not front_is_clear():
+
+                            print(f"x2 = {x2}")
+                            print(f"y2 = {y2}")                                   
+
+                                    
+                                    
+                                    
+v = 0 # counts vertically
+t = 3 # total count
+r = 0 # trigger for right turn
+w = 0 # not being used
+y = 0 # trigger count for left turn
+x = 0 # main move count currently not being used
+z = 1 # just for main while loop
+o = 0 # object pickup count
+a = 0 #first row count horzont
+b = 0 # count for each row
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+def take_object():
+    #o = 1
+    global o
+    while object_here():
+        take()
+        o += 1
+        #y += 1
+
+def upper_right():
+    global v
+    global a
+    global t
+    print("working")
+    
+    if t == (x2 * y2):
+        if y2 % 2 == 0:
+            upper_left_check()
+            return_and_toss()
+            
+        else: #  could also make y2 %2 != 0 #checking for right corner and moves to left and return_and_toss()
+            turn_left()
+            if not front_is_clear():
+                turn_right()
+                if not front_is_clear() and right_is_clear():
+                    turn_around()
+                    for x in range (a):
+                        move()
+                        take_object()
+                        if not front_is_clear():
+                            return_and_toss()
+
+        
+def upper_left_check(): #checks for corner and turns check for clearance
+    if not front_is_clear() and wall_on_right():
+        turn_left() #if in upper right left turn would not be clear
+        if wall_on_right and front_is_clear():
+            turn_right()
+                   
+
+                
+def return_and_toss(): # starts from upper left corner facing left wall
+    if t == (x2 * y2): #last bit to bin toss need different trigger
+        turn_left()
+        while front_is_clear():
+            move()
+            take_object()
+            if not front_is_clear(): #and if not wall_on right():
+                #toss()
+                for x in range (o):
+                    toss() #need to toss in range of objects found
+
+                if t == (x2 * y2):# return to starting point    
+                    turn_left()
+                    move()
+                    turn_right()
+                    move()
+                    move()
+                    turn_right()
+                    move()
+                    done()
+
+                                    
+                
+    
+    
+
+def check_pond():
+    global b
+    global t
+    if not front_is_clear(): #check for pond by seeing if can go around.
+            turn_left()
+            if front_is_clear(): #if not reset
+                move()
+                turn_right()
+                if front_is_clear(): #first step around
+                    move()
+                    b += 1
+                    t += 1
+                    print (f"t = {t}")
+                    #print(f"cpB = {b}")
+                    if front_is_clear(): # will hit wall if not pond here
+                        move()
+                        b += 1
+                        t += 1
+                        print (f"t = {t}")
+                        #print(f"cpB = {b}")
+                        turn_right()
+                        if front_is_clear():# second step full around
+                            move()
+                            turn_left()
+                            
+                    elif not front_is_clear(): # reverse path if not a pond
+                        turn_around()
+                        move()
+                        turn_left()
+                        move()
+                        turn_around() #facing orginal direction now
+
+
+                        
+                        
+                        
+
+
+
+
+    
+
+
+
+
+def count_width():
+   while front_is_clear():
+        global a
+        global t
+        move()
+        take_object()
+        a += 1
+        t += 1
+        print(f"a = {a}")
+        print (f"t = {t}")
+
+def first_left():
+    if not front_is_clear():
+        global y
+        global r
+        global v
+        global t
+        turn_left()
+        move()
+        take_object()
+        turn_left()
+        y += 1
+        v += 1
+        t += 1
+        print (f"t = {t}")
+        r = 0
+def compare_width():
+    
+    while front_is_clear():
+        global b
+        global t
+        
+        move()
+        take_object()
+        b += 1
+        t += 1
+        print (f"t = {t}")
+
+        print(f"b = {b}")
+        #if b != a :
+            #check_pond()
+def trash_bin():
+    global t
+    while front_is_clear():
+        take_object()
+        move()
+        t += 1
+        print (f"t = {t}")
+        
+
+def first_right():
+    if not front_is_clear():
+        global y
+        global r
+        global v
+        global t
+        turn_right()
+        move()
+        take_object()
+        turn_right()
+        r += 1
+        v += 1
+        t += 1
+        y = 0        
+
+def third_row():
+    global t
+    #b = 1 #add 1 to be to make count correct for bin row
+    for x in range(a -1):
+        move()
+        t += 1
+        print (f"t = {t}")
+        take_object()
+    if not front_is_clear():
+        first_left()
+        
+        
+# storm     
+think(0)
+grid_count()
+turn_left()
+vertical_count()
+turn_around()
+count_width()
+first_left()
+trash_bin()
+first_right()
+third_row()
+while z == 1:
+    take_object()
+    print (f"t = {t}")
+    print (f"v = {v}")
+    
+    #while object_here():
+        #take()
+        #y += 1
+        #move()
+        #x += 1
+    
+        
+        
+    if not object_here():
+        if front_is_clear():
+            compare_width()
+            x += 1
+            #t += 1
+            print (f"x = {x}")
+        
+        if b != a:
+            print(f"a = {a}")
+            print(f"b = {b}")
+            check_pond()
+        
+#        if not front_is_clear() and not right_is_clear():
+#            if turn_left():
+#                if t == (a * v) and not front_is_clear():
+#                    upper_right
+#            else:
+#                turn_right()
+                
+            
+        elif not front_is_clear(): #and wall_on right():
+            if y == 0 and t != (x2 *y2): #left turn
+                turn_left()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_left()
+                    y += 1
+                    v += 1
+                    t += 1
+                    r = 0
+                    b = 0
+                    #w += 1
+            elif r == 0 and t != (x2 * y2):#and w < 3: #right turn
+                turn_right()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_right()
+                    y = 0
+                    v += 1
+                    r += 1
+                    t += 1 
+                    b = 0
+            elif t == (x2 * y2):
+                print(f"T = {t}")
+                print(x2 * y2)
+                #z = 0 # exits while loop
+                upper_right()
+            
+                
+### everything is working wasn't making b = 0 after row did that after right left turn then
+# made the trigger for check_pond() work. now need return for upper right corner scenerio
+                                  
+
+    
+    
+                                    
+#storm 4
+## refined code of storm 3
+### robot always starts in upper left corner after counting x2 and y2 size of grid.
+### it then counts down useing v -=1, to tell difference between short row and pond and when to 
+### return and toss objects.
+### a count moves across by subtracting 1 from x2 and stays constant, b count move of each row
+### and is reset after each turn to 0. if a != b this is how it check for a pond.
+
+x2 = 1 # x grid size horizontal
+y2 = 1 # y grid size vertical
+v = 1 # counts vertically down keeps track of current row
+t = 3 # total count of squares robot moves, at 3 because of short rows and starting at position 1 
+r = 0 # trigger for right turn
+
+y = 0 # trigger count for left turn
+
+z = 1 # just for main while loop
+o = 0 # object pickup count
+a = 0 #first row count horizontal changed to a = (x2 -1) left as constant
+b = 0 # count for each row
+
+
+def turn_right():
+    #3 lefts make a right
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def turn_around():
+    turn_left()
+    turn_left()
+
+def take_object():
+    #o = 1
+    global o
+    while object_here():
+        take()
+        o += 1
+        #y += 1
+        
+def grid_count():
+    global x2, y2
+    
+    while front_is_clear():
+        move()
+        x2 += 1
+        
+            
+def vertical_count():
+    global y2, x2, v
+    
+    while front_is_clear():
+        move()
+        y2 += 1
+        v += 1
+        if not front_is_clear():
+            #print(f"y2 = {y2}, x2 = {x2}")
+            turn_left()
+            break
+def check_pond():
+    global b, t
+    
+    if not front_is_clear(): #check for pond by seeing if can go around.
+            turn_left()
+            if front_is_clear(): #if not reset
+                move()
+                turn_right()
+                if front_is_clear(): #first step around
+                    move()
+                    b += 1
+                    t += 1
+                    #print (f"t = {t}")
+                    #print(f"cpB = {b}")
+                    if front_is_clear(): # will hit wall if not pond here
+                        move()
+                        b += 1
+                        t += 1
+                        #print (f"t = {t}")
+                        #print(f"cpB = {b}")
+                        turn_right()
+                        if front_is_clear():# second step full around
+                            move()
+                            turn_left()
+                            
+                    elif not front_is_clear(): # reverse path if not a pond
+                        turn_around()
+                        move()
+                        turn_left()
+                        move()
+                        turn_around() #facing orginal direction now
+
+            
+
+####main code in here functions above
+#storm 4
+#think(0) # comment out to make code run slower
+grid_count()
+turn_left()
+vertical_count()
+
+while z == 1:
+    take_object()
+    #print (f"t = {t}")
+    #print (f"v = {v}")
+      
+    if not object_here():
+        if front_is_clear():
+            move()
+            take_object()
+            
+            b += 1
+            a = (x2 - 1)
+            #print(f"B = {b}, A = {a}")
+            #print(f"V = {v}")
+            
+        
+        elif v == 1:
+                turn_around()
+                for x in range(a):
+                    move()
+                    if not front_is_clear():
+                        turn_right()
+                        for x in range(o):
+                            toss()
+                            o -= 1
+                        if o == 0:
+                            print(f"O = {o}")
+                            turn_left()
+                            done()
+                            z = 0 # kills main while loup
+        
+        elif b != a and v != 2:
+            #print(f"a = {a}")
+            #print(f"b = {b}")
+            check_pond()
+        
+
+                
+            
+        elif not front_is_clear(): 
+             
+            if y == 0 and t != (x2 *y2): #left turn
+                turn_left()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_left()
+                    y += 1
+                    v -= 1
+                    #print(f"v = {v} left turn")
+                    t += 1
+                    r = 0
+                    b = 0
+                    
+            elif r == 0 and t != (x2 * y2):#right turn
+                turn_right()
+                if front_is_clear():
+                    move()
+                    take_object()
+                    turn_right()
+                    y = 0
+                    v -= 1 
+                    #print(f"v = {v} right turn")
+                    r += 1
+                    t += 1 
+                    b = 0
+           
+               
+#tokens 1        
+               
+v = 0           
+    
+    
+while not at_goal():
+    #move()
+    
+    while object_here():
+        take()
+        #move()
+        v += 1
+        if not object_here()
+        move()
+        if v == 5 :
+            for x in range(v):
+                put()
+            v = 0
+ 
+
+
+#tokens 4        
+               
+v = 0           
+m = 0    
+    
+while not at_goal():
+    #move()
+    while object_here() and m != 8:
+        take()
+        
+        v += 1
+        
+    if m == 8 :
+        for x in range(v):
+            put()
+    if not object_here() or m == 8:
+            move()
+            m += 1
+            print(m)
+
+
